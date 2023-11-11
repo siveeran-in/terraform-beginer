@@ -1,0 +1,1153 @@
+
+C:\Users\user25\Desktop\Azure_VM>terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding hashicorp/azurerm versions matching "3.62.0"...
+- Installing hashicorp/azurerm v3.62.0...
+- Installed hashicorp/azurerm v3.62.0 (signed by HashiCorp)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+Success! The configuration is valid.
+
+
+C:\Users\user25\Desktop\Azure_VM>terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_linux_virtual_machine.example will be created
+  + resource "azurerm_linux_virtual_machine" "example" {
+      + admin_password                  = (sensitive value)
+      + admin_username                  = "adminuser"
+      + allow_extension_operations      = true
+      + computer_name                   = (known after apply)
+      + disable_password_authentication = false
+      + extensions_time_budget          = "PT1H30M"
+      + id                              = (known after apply)
+      + location                        = "centralindia"
+      + max_bid_price                   = -1
+      + name                            = "siv-vm"
+      + network_interface_ids           = (known after apply)
+      + patch_assessment_mode           = "ImageDefault"
+      + patch_mode                      = "ImageDefault"
+      + platform_fault_domain           = -1
+      + priority                        = "Regular"
+      + private_ip_address              = (known after apply)
+      + private_ip_addresses            = (known after apply)
+      + provision_vm_agent              = true
+      + public_ip_address               = (known after apply)
+      + public_ip_addresses             = (known after apply)
+      + resource_group_name             = "siv-rg"
+      + size                            = "Standard_F2"
+      + virtual_machine_id              = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "UbuntuServer"
+          + publisher = "Canonical"
+          + sku       = "18.04-LTS"
+          + version   = "latest"
+        }
+    }
+
+  # azurerm_network_interface.example will be created
+  + resource "azurerm_network_interface" "example" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "centralindia"
+      + mac_address                   = (known after apply)
+      + name                          = "siv-nic"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "siv-rg"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_resource_group.example will be created
+  + resource "azurerm_resource_group" "example" {
+      + id       = (known after apply)
+      + location = "centralindia"
+      + name     = "siv-rg"
+    }
+
+  # azurerm_subnet.example will be created
+  + resource "azurerm_subnet" "example" {
+      + address_prefixes                               = [
+          + "10.0.2.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = (known after apply)
+      + enforce_private_link_service_network_policies  = (known after apply)
+      + id                                             = (known after apply)
+      + name                                           = "siv-sn"
+      + private_endpoint_network_policies_enabled      = (known after apply)
+      + private_link_service_network_policies_enabled  = (known after apply)
+      + resource_group_name                            = "siv-rg"
+      + virtual_network_name                           = "siv-vn"
+    }
+
+  # azurerm_virtual_network.example will be created
+  + resource "azurerm_virtual_network" "example" {
+      + address_space       = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers         = (known after apply)
+      + guid                = (known after apply)
+      + id                  = (known after apply)
+      + location            = "centralindia"
+      + name                = "siv-vn"
+      + resource_group_name = "siv-rg"
+      + subnet              = (known after apply)
+    }
+
+Plan: 5 to add, 0 to change, 0 to destroy.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if
+you run "terraform apply" now.
+
+C:\Users\user25\Desktop\Azure_VM>terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_linux_virtual_machine.example will be created
+  + resource "azurerm_linux_virtual_machine" "example" {
+      + admin_password                  = (sensitive value)
+      + admin_username                  = "adminuser"
+      + allow_extension_operations      = true
+      + computer_name                   = (known after apply)
+      + disable_password_authentication = false
+      + extensions_time_budget          = "PT1H30M"
+      + id                              = (known after apply)
+      + location                        = "centralindia"
+      + max_bid_price                   = -1
+      + name                            = "siv-vm"
+      + network_interface_ids           = (known after apply)
+      + patch_assessment_mode           = "ImageDefault"
+      + patch_mode                      = "ImageDefault"
+      + platform_fault_domain           = -1
+      + priority                        = "Regular"
+      + private_ip_address              = (known after apply)
+      + private_ip_addresses            = (known after apply)
+      + provision_vm_agent              = true
+      + public_ip_address               = (known after apply)
+      + public_ip_addresses             = (known after apply)
+      + resource_group_name             = "siv-rg"
+      + size                            = "Standard_F2"
+      + virtual_machine_id              = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "UbuntuServer"
+          + publisher = "Canonical"
+          + sku       = "18.04-LTS"
+          + version   = "latest"
+        }
+    }
+
+  # azurerm_network_interface.example will be created
+  + resource "azurerm_network_interface" "example" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "centralindia"
+      + mac_address                   = (known after apply)
+      + name                          = "siv-nic"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "siv-rg"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_resource_group.example will be created
+  + resource "azurerm_resource_group" "example" {
+      + id       = (known after apply)
+      + location = "centralindia"
+      + name     = "siv-rg"
+    }
+
+  # azurerm_subnet.example will be created
+  + resource "azurerm_subnet" "example" {
+      + address_prefixes                               = [
+          + "10.0.2.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = (known after apply)
+      + enforce_private_link_service_network_policies  = (known after apply)
+      + id                                             = (known after apply)
+      + name                                           = "siv-sn"
+      + private_endpoint_network_policies_enabled      = (known after apply)
+      + private_link_service_network_policies_enabled  = (known after apply)
+      + resource_group_name                            = "siv-rg"
+      + virtual_network_name                           = "siv-vn"
+    }
+
+  # azurerm_virtual_network.example will be created
+  + resource "azurerm_virtual_network" "example" {
+      + address_space       = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers         = (known after apply)
+      + guid                = (known after apply)
+      + id                  = (known after apply)
+      + location            = "centralindia"
+      + name                = "siv-vn"
+      + resource_group_name = "siv-rg"
+      + subnet              = (known after apply)
+    }
+
+Plan: 5 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+azurerm_resource_group.example: Creating...
+azurerm_resource_group.example: Creation complete after 1s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg]
+azurerm_virtual_network.example: Creating...
+azurerm_virtual_network.example: Creation complete after 4s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn]
+azurerm_subnet.example: Creating...
+azurerm_subnet.example: Creation complete after 4s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn]
+azurerm_network_interface.example: Creating...
+azurerm_network_interface.example: Creation complete after 1s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic]
+azurerm_linux_virtual_machine.example: Creating...
+azurerm_linux_virtual_machine.example: Still creating... [10s elapsed]
+azurerm_linux_virtual_machine.example: Creation complete after 16s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+
+C:\Users\user25\Desktop\Azure_VM>terraform apply
+azurerm_resource_group.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg]
+azurerm_virtual_network.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn]
+azurerm_subnet.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn]
+azurerm_network_interface.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic]
+azurerm_linux_virtual_machine.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are
+needed.
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+C:\Users\user25\Desktop\Azure_VM>terraform apply
+azurerm_resource_group.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg]
+azurerm_virtual_network.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn]
+azurerm_subnet.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn]
+azurerm_network_interface.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic]
+azurerm_linux_virtual_machine.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # azurerm_linux_virtual_machine.example will be updated in-place
+  ~ resource "azurerm_linux_virtual_machine" "example" {
+        id                              = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm"
+        name                            = "siv-vm"
+      ~ size                            = "Standard_F2" -> "Standard_F4"
+        tags                            = {}
+        # (22 unchanged attributes hidden)
+
+        # (2 unchanged blocks hidden)
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+azurerm_linux_virtual_machine.example: Modifying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+azurerm_linux_virtual_machine.example: Still modifying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 10s elapsed]
+azurerm_linux_virtual_machine.example: Still modifying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 20s elapsed]
+azurerm_linux_virtual_machine.example: Still modifying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 30s elapsed]
+azurerm_linux_virtual_machine.example: Still modifying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 40s elapsed]
+azurerm_linux_virtual_machine.example: Still modifying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 50s elapsed]
+azurerm_linux_virtual_machine.example: Still modifying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 1m0s elapsed]
+azurerm_linux_virtual_machine.example: Still modifying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 1m10s elapsed]
+azurerm_linux_virtual_machine.example: Modifications complete after 1m12s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+
+C:\Users\user25\Desktop\Azure_VM>terraform apply
+?
+¦ Error: Unsupported block type
+¦
+¦   on main.tf line 65, in resource "azurerm_linux_virtual_machine" "example":
+¦   65: resource "azurerm_managed_disk" "example" {
+¦
+¦ Blocks of type "resource" are not expected here.
+?
+?
+¦ Error: Unsupported block type
+¦
+¦   on main.tf line 74, in resource "azurerm_linux_virtual_machine" "example":
+¦   74: resource "azurerm_virtual_machine_data_disk_attachment" "example" {
+¦
+¦ Blocks of type "resource" are not expected here.
+?
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+?
+¦ Error: Unsupported block type
+¦
+¦   on main.tf line 72, in resource "azurerm_linux_virtual_machine" "example":
+¦   72: resource "azurerm_managed_disk" "example" {
+¦
+¦ Blocks of type "resource" are not expected here.
+?
+?
+¦ Error: Unsupported block type
+¦
+¦   on main.tf line 81, in resource "azurerm_linux_virtual_machine" "example":
+¦   81: resource "azurerm_virtual_machine_data_disk_attachment" "example" {
+¦
+¦ Blocks of type "resource" are not expected here.
+?
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+?
+¦ Error: Reference to undeclared resource
+¦
+¦   on main.tf line 84, in resource "azurerm_virtual_machine_data_disk_attachment" "example":
+¦   84:   virtual_machine_id = azurerm_virtual_machine.example.id
+¦
+¦ A managed resource "azurerm_virtual_machine" "example" has not been
+¦ declared in the root module.
+?
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+?
+¦ Error: Invalid resource type
+¦
+¦   on main.tf line 82, in resource "azurerm_linux_virtual_machine_data_disk_attachment" "example":
+¦   82: resource "azurerm_linux_virtual_machine_data_disk_attachment" "example" {
+¦
+¦ The provider hashicorp/azurerm does not support resource type
+¦ "azurerm_linux_virtual_machine_data_disk_attachment".
+?
+
+C:\Users\user25\Desktop\Azure_VM>terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/azurerm v3.62.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+?
+¦ Error: Invalid resource type
+¦
+¦   on main.tf line 82, in resource "azurerm_linux_virtual_machine_data_disk_attachment" "example":
+¦   82: resource "azurerm_linux_virtual_machine_data_disk_attachment" "example" {
+¦
+¦ The provider hashicorp/azurerm does not support resource type
+¦ "azurerm_linux_virtual_machine_data_disk_attachment".
+?
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+?
+¦ Error: Invalid resource type
+¦
+¦   on main.tf line 82, in resource "azurerm_linux_virtual_machine_data_disk_attachment" "example":
+¦   82: resource "azurerm_linux_virtual_machine_data_disk_attachment" "example" {
+¦
+¦ The provider hashicorp/azurerm does not support resource type
+¦ "azurerm_linux_virtual_machine_data_disk_attachment".
+?
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+?
+¦ Error: Duplicate resource "azurerm_linux_virtual_machine" configuration
+¦
+¦   on main.tf line 82:
+¦   82: resource "azurerm_linux_virtual_machine" "example" {
+¦
+¦ A azurerm_linux_virtual_machine resource named "example" was
+¦ already declared at main.tf:49,1-51. Resource names must be unique
+¦ per type in each module.
+?
+
+C:\Users\user25\Desktop\Azure_VM>terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/azurerm v3.62.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+?
+¦ Error: Invalid resource type
+¦
+¦   on main.tf line 82, in resource "azurerm_linux_virtual_machine_data_disk_attachment" "example":
+¦   82: resource "azurerm_linux_virtual_machine_data_disk_attachment" "example" {
+¦
+¦ The provider hashicorp/azurerm does not support resource type
+¦ "azurerm_linux_virtual_machine_data_disk_attachment".
+?
+
+C:\Users\user25\Desktop\Azure_VM>terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+?
+¦ Error: Failed to query available provider packages
+¦
+¦ Could not retrieve the list of available versions for provider
+¦ hashicorp/azurerm: could not connect to registry.terraform.io:
+¦ failed to request discovery document: Get
+¦ "https://registry.terraform.io/.well-known/terraform.json":
+¦ net/http: request canceled while waiting for connection
+¦ (Client.Timeout exceeded while awaiting headers)
+?
+
+
+C:\Users\user25\Desktop\Azure_VM>terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/azurerm v3.62.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\user25\Desktop\Azure_VM>terraform validate
+Success! The configuration is valid.
+
+
+C:\Users\user25\Desktop\Azure_VM>terraform apply
+azurerm_resource_group.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg]
+azurerm_virtual_network.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn]
+azurerm_subnet.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn]
+azurerm_network_interface.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic]
+azurerm_linux_virtual_machine.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform
+since the last "terraform apply" which may have affected this plan:
+
+  # azurerm_linux_virtual_machine.example has been deleted
+  - resource "azurerm_linux_virtual_machine" "example" {
+      - id                              = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm" -> null
+        name                            = "siv-vm"
+        tags                            = {}
+        # (23 unchanged attributes hidden)
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # azurerm_network_interface.example has been deleted
+  - resource "azurerm_network_interface" "example" {
+      - id                            = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic" -> null
+        name                          = "siv-nic"
+        tags                          = {}
+        # (11 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # azurerm_resource_group.example has been deleted
+  - resource "azurerm_resource_group" "example" {
+        id       = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg"
+      - location = "centralindia" -> null
+      - name     = "siv-rg" -> null
+        tags     = {}
+    }
+
+  # azurerm_subnet.example has been deleted
+  - resource "azurerm_subnet" "example" {
+      - id                                             = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn" -> null
+        name                                           = "siv-sn"
+        # (9 unchanged attributes hidden)
+    }
+
+  # azurerm_virtual_network.example has been deleted
+  - resource "azurerm_virtual_network" "example" {
+        id                      = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn"
+      - name                    = "siv-vn" -> null
+        tags                    = {}
+        # (7 unchanged attributes hidden)
+    }
+
+
+Unless you have made equivalent changes to your configuration, or
+ignored the relevant attributes using ignore_changes, the following
+plan may include actions to undo or respond to these changes.
+
+---------------------------------------------------------------------
+
+Terraform used the selected providers to generate the following
+execution plan. Resource actions are indicated with the following
+symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_linux_virtual_machine.example will be created
+  + resource "azurerm_linux_virtual_machine" "example" {
+      + admin_password                  = (sensitive value)
+      + admin_username                  = "adminuser"
+      + allow_extension_operations      = true
+      + computer_name                   = (known after apply)
+      + disable_password_authentication = false
+      + extensions_time_budget          = "PT1H30M"
+      + id                              = (known after apply)
+      + location                        = "centralindia"
+      + max_bid_price                   = -1
+      + name                            = "siv-vm"
+      + network_interface_ids           = (known after apply)
+      + patch_assessment_mode           = "ImageDefault"
+      + patch_mode                      = "ImageDefault"
+      + platform_fault_domain           = -1
+      + priority                        = "Regular"
+      + private_ip_address              = (known after apply)
+      + private_ip_addresses            = (known after apply)
+      + provision_vm_agent              = true
+      + public_ip_address               = (known after apply)
+      + public_ip_addresses             = (known after apply)
+      + resource_group_name             = "siv-rg"
+      + size                            = "Standard_F4"
+      + virtual_machine_id              = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "UbuntuServer"
+          + publisher = "Canonical"
+          + sku       = "18.04-LTS"
+          + version   = "latest"
+        }
+    }
+
+  # azurerm_managed_disk.example will be created
+  + resource "azurerm_managed_disk" "example" {
+      + create_option                 = "Empty"
+      + disk_iops_read_only           = (known after apply)
+      + disk_iops_read_write          = (known after apply)
+      + disk_mbps_read_only           = (known after apply)
+      + disk_mbps_read_write          = (known after apply)
+      + disk_size_gb                  = 10
+      + id                            = (known after apply)
+      + location                      = "centralindia"
+      + logical_sector_size           = (known after apply)
+      + max_shares                    = (known after apply)
+      + name                          = "siv-disk1"
+      + public_network_access_enabled = true
+      + resource_group_name           = "siv-rg"
+      + source_uri                    = (known after apply)
+      + storage_account_type          = "Standard_LRS"
+      + tier                          = (known after apply)
+    }
+
+  # azurerm_network_interface.example will be created
+  + resource "azurerm_network_interface" "example" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "centralindia"
+      + mac_address                   = (known after apply)
+      + name                          = "siv-nic"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "siv-rg"
+      + virtual_machine_id            = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_resource_group.example will be created
+  + resource "azurerm_resource_group" "example" {
+      + id       = (known after apply)
+      + location = "centralindia"
+      + name     = "siv-rg"
+    }
+
+  # azurerm_subnet.example will be created
+  + resource "azurerm_subnet" "example" {
+      + address_prefixes                               = [
+          + "10.0.2.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = (known after apply)
+      + enforce_private_link_service_network_policies  = (known after apply)
+      + id                                             = (known after apply)
+      + name                                           = "siv-sn"
+      + private_endpoint_network_policies_enabled      = (known after apply)
+      + private_link_service_network_policies_enabled  = (known after apply)
+      + resource_group_name                            = "siv-rg"
+      + virtual_network_name                           = "siv-vn"
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.example will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "example" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_network.example will be created
+  + resource "azurerm_virtual_network" "example" {
+      + address_space       = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers         = (known after apply)
+      + guid                = (known after apply)
+      + id                  = (known after apply)
+      + location            = "centralindia"
+      + name                = "siv-vn"
+      + resource_group_name = "siv-rg"
+      + subnet              = (known after apply)
+    }
+
+Plan: 7 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+azurerm_resource_group.example: Creating...
+azurerm_resource_group.example: Creation complete after 1s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg]
+azurerm_virtual_network.example: Creating...
+azurerm_managed_disk.example: Creating...
+azurerm_managed_disk.example: Creation complete after 4s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/disks/siv-disk1]
+azurerm_virtual_network.example: Creation complete after 6s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn]
+azurerm_subnet.example: Creating...
+azurerm_subnet.example: Creation complete after 5s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn]
+azurerm_network_interface.example: Creating...
+azurerm_network_interface.example: Creation complete after 2s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic]
+azurerm_linux_virtual_machine.example: Creating...
+azurerm_linux_virtual_machine.example: Still creating... [10s elapsed]azurerm_linux_virtual_machine.example: Still creating... [20s elapsed]azurerm_linux_virtual_machine.example: Still creating... [30s elapsed]azurerm_linux_virtual_machine.example: Still creating... [40s elapsed]azurerm_linux_virtual_machine.example: Creation complete after 49s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+azurerm_virtual_machine_data_disk_attachment.example: Creating...
+azurerm_virtual_machine_data_disk_attachment.example: Still creating... [10s elapsed]
+azurerm_virtual_machine_data_disk_attachment.example: Still creating... [20s elapsed]
+azurerm_virtual_machine_data_disk_attachment.example: Still creating... [30s elapsed]
+azurerm_virtual_machine_data_disk_attachment.example: Creation complete after 32s [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm/dataDisks/siv-disk1]
+
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
+
+C:\Users\user25\Desktop\Azure_VM>terraform destroy
+azurerm_resource_group.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg]
+azurerm_virtual_network.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn]
+azurerm_managed_disk.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/disks/siv-disk1]
+azurerm_subnet.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn]
+azurerm_network_interface.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic]
+azurerm_linux_virtual_machine.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+azurerm_virtual_machine_data_disk_attachment.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm/dataDisks/siv-disk1]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azurerm_linux_virtual_machine.example will be destroyed
+  - resource "azurerm_linux_virtual_machine" "example" {
+      - admin_password                  = (sensitive value) -> null
+      - admin_username                  = "adminuser" -> null
+      - allow_extension_operations      = true -> null
+      - computer_name                   = "siv-vm" -> null
+      - disable_password_authentication = false -> null
+      - encryption_at_host_enabled      = false -> null
+      - extensions_time_budget          = "PT1H30M" -> null
+      - id                              = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm" -> null
+      - location                        = "centralindia" -> null
+      - max_bid_price                   = -1 -> null
+      - name                            = "siv-vm" -> null
+      - network_interface_ids           = [
+          - "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic",
+        ] -> null
+      - patch_assessment_mode           = "ImageDefault" -> null
+      - patch_mode                      = "ImageDefault" -> null
+      - platform_fault_domain           = -1 -> null
+      - priority                        = "Regular" -> null
+      - private_ip_address              = "10.0.2.4" -> null
+      - private_ip_addresses            = [
+          - "10.0.2.4",
+        ] -> null
+      - provision_vm_agent              = true -> null
+      - public_ip_addresses             = [] -> null
+      - resource_group_name             = "siv-rg" -> null
+      - secure_boot_enabled             = false -> null
+      - size                            = "Standard_F4" -> null
+      - tags                            = {} -> null
+      - virtual_machine_id              = "8d91b258-366d-429d-8158-679b2191f1ed" -> null
+      - vtpm_enabled                    = false -> null
+
+      - os_disk {
+          - caching                   = "ReadWrite" -> null
+          - disk_size_gb              = 30 -> null
+          - name                      = "siv-vm_OsDisk_1_243a37222b714c76b970406b0da34862" -> null
+          - storage_account_type      = "Standard_LRS" -> null
+          - write_accelerator_enabled = false -> null
+        }
+
+      - source_image_reference {
+          - offer     = "UbuntuServer" -> null
+          - publisher = "Canonical" -> null
+          - sku       = "18.04-LTS" -> null
+          - version   = "latest" -> null
+        }
+    }
+
+  # azurerm_managed_disk.example will be destroyed
+  - resource "azurerm_managed_disk" "example" {
+      - create_option                 = "Empty" -> null
+      - disk_iops_read_only           = 0 -> null
+      - disk_iops_read_write          = 500 -> null
+      - disk_mbps_read_only           = 0 -> null
+      - disk_mbps_read_write          = 60 -> null
+      - disk_size_gb                  = 10 -> null
+      - id                            = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/disks/siv-disk1" -> null
+      - location                      = "centralindia" -> null
+      - max_shares                    = 0 -> null
+      - name                          = "siv-disk1" -> null
+      - on_demand_bursting_enabled    = false -> null
+      - public_network_access_enabled = true -> null
+      - resource_group_name           = "siv-rg" -> null
+      - storage_account_type          = "Standard_LRS" -> null
+      - tags                          = {} -> null
+      - trusted_launch_enabled        = false -> null
+      - upload_size_bytes             = 0 -> null
+    }
+
+  # azurerm_network_interface.example will be destroyed
+  - resource "azurerm_network_interface" "example" {
+      - applied_dns_servers           = [] -> null
+      - dns_servers                   = [] -> null
+      - enable_accelerated_networking = false -> null
+      - enable_ip_forwarding          = false -> null
+      - id                            = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic" -> null
+      - internal_domain_name_suffix   = "a3kxjxidfa1ehboqi1ilbqhrig.rx.internal.cloudapp.net" -> null
+      - location                      = "centralindia" -> null
+      - mac_address                   = "60-45-BD-A5-6A-53" -> null
+      - name                          = "siv-nic" -> null
+      - private_ip_address            = "10.0.2.4" -> null
+      - private_ip_addresses          = [
+          - "10.0.2.4",
+        ] -> null
+      - resource_group_name           = "siv-rg" -> null
+      - tags                          = {} -> null
+      - virtual_machine_id            = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm" -> null
+
+      - ip_configuration {
+          - name                          = "internal" -> null
+          - primary                       = true -> null
+          - private_ip_address            = "10.0.2.4" -> null
+          - private_ip_address_allocation = "Dynamic" -> null
+          - private_ip_address_version    = "IPv4" -> null
+          - subnet_id                     = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn" -> null
+        }
+    }
+
+  # azurerm_resource_group.example will be destroyed
+  - resource "azurerm_resource_group" "example" {
+      - id       = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg" -> null
+      - location = "centralindia" -> null
+      - name     = "siv-rg" -> null
+      - tags     = {} -> null
+    }
+
+  # azurerm_subnet.example will be destroyed
+  - resource "azurerm_subnet" "example" {
+      - address_prefixes                               = [
+          - "10.0.2.0/24",
+        ] -> null
+      - enforce_private_link_endpoint_network_policies = false -> null
+      - enforce_private_link_service_network_policies  = false -> null
+      - id                                             = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn" -> null
+      - name                                           = "siv-sn" -> null
+      - private_endpoint_network_policies_enabled      = true -> null
+      - private_link_service_network_policies_enabled  = true -> null
+      - resource_group_name                            = "siv-rg" -> null
+      - service_endpoint_policy_ids                    = [] -> null
+      - service_endpoints                              = [] -> null
+      - virtual_network_name                           = "siv-vn" -> null
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.example will be destroyed
+  - resource "azurerm_virtual_machine_data_disk_attachment" "example" {
+      - caching                   = "ReadWrite" -> null
+      - create_option             = "Attach" -> null
+      - id                        = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm/dataDisks/siv-disk1" -> null
+      - lun                       = 10 -> null
+      - managed_disk_id           = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/disks/siv-disk1" -> null
+      - virtual_machine_id        = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm" -> null
+      - write_accelerator_enabled = false -> null
+    }
+
+  # azurerm_virtual_network.example will be destroyed
+  - resource "azurerm_virtual_network" "example" {
+      - address_space           = [
+          - "10.0.0.0/16",
+        ] -> null
+      - dns_servers             = [] -> null
+      - flow_timeout_in_minutes = 0 -> null
+      - guid                    = "dd745507-2803-4336-85d0-46d0b0c0f146" -> null
+      - id                      = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn" -> null
+      - location                = "centralindia" -> null
+      - name                    = "siv-vn" -> null
+      - resource_group_name     = "siv-rg" -> null
+      - subnet                  = [
+          - {
+              - address_prefix = "10.0.2.0/24"
+              - id             = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn"
+              - name           = "siv-sn"
+              - security_group = ""
+            },
+        ] -> null
+      - tags                    = {} -> null
+    }
+
+Plan: 0 to add, 0 to change, 7 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: Y
+
+Destroy cancelled.
+
+C:\Users\user25\Desktop\Azure_VM>terraform destroy
+azurerm_resource_group.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg]
+azurerm_virtual_network.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn]
+azurerm_managed_disk.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/disks/siv-disk1]
+azurerm_subnet.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn]
+azurerm_network_interface.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic]
+azurerm_linux_virtual_machine.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+azurerm_virtual_machine_data_disk_attachment.example: Refreshing state... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm/dataDisks/siv-disk1]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azurerm_linux_virtual_machine.example will be destroyed
+  - resource "azurerm_linux_virtual_machine" "example" {
+      - admin_password                  = (sensitive value) -> null
+      - admin_username                  = "adminuser" -> null
+      - allow_extension_operations      = true -> null
+      - computer_name                   = "siv-vm" -> null
+      - disable_password_authentication = false -> null
+      - encryption_at_host_enabled      = false -> null
+      - extensions_time_budget          = "PT1H30M" -> null
+      - id                              = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm" -> null
+      - location                        = "centralindia" -> null
+      - max_bid_price                   = -1 -> null
+      - name                            = "siv-vm" -> null
+      - network_interface_ids           = [
+          - "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic",
+        ] -> null
+      - patch_assessment_mode           = "ImageDefault" -> null
+      - patch_mode                      = "ImageDefault" -> null
+      - platform_fault_domain           = -1 -> null
+      - priority                        = "Regular" -> null
+      - private_ip_address              = "10.0.2.4" -> null
+      - private_ip_addresses            = [
+          - "10.0.2.4",
+        ] -> null
+      - provision_vm_agent              = true -> null
+      - public_ip_addresses             = [] -> null
+      - resource_group_name             = "siv-rg" -> null
+      - secure_boot_enabled             = false -> null
+      - size                            = "Standard_F4" -> null
+      - tags                            = {} -> null
+      - virtual_machine_id              = "8d91b258-366d-429d-8158-679b2191f1ed" -> null
+      - vtpm_enabled                    = false -> null
+
+      - os_disk {
+          - caching                   = "ReadWrite" -> null
+          - disk_size_gb              = 30 -> null
+          - name                      = "siv-vm_OsDisk_1_243a37222b714c76b970406b0da34862" -> null
+          - storage_account_type      = "Standard_LRS" -> null
+          - write_accelerator_enabled = false -> null
+        }
+
+      - source_image_reference {
+          - offer     = "UbuntuServer" -> null
+          - publisher = "Canonical" -> null
+          - sku       = "18.04-LTS" -> null
+          - version   = "latest" -> null
+        }
+    }
+
+  # azurerm_managed_disk.example will be destroyed
+  - resource "azurerm_managed_disk" "example" {
+      - create_option                 = "Empty" -> null
+      - disk_iops_read_only           = 0 -> null
+      - disk_iops_read_write          = 500 -> null
+      - disk_mbps_read_only           = 0 -> null
+      - disk_mbps_read_write          = 60 -> null
+      - disk_size_gb                  = 10 -> null
+      - id                            = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/disks/siv-disk1" -> null
+      - location                      = "centralindia" -> null
+      - max_shares                    = 0 -> null
+      - name                          = "siv-disk1" -> null
+      - on_demand_bursting_enabled    = false -> null
+      - public_network_access_enabled = true -> null
+      - resource_group_name           = "siv-rg" -> null
+      - storage_account_type          = "Standard_LRS" -> null
+      - tags                          = {} -> null
+      - trusted_launch_enabled        = false -> null
+      - upload_size_bytes             = 0 -> null
+    }
+
+  # azurerm_network_interface.example will be destroyed
+  - resource "azurerm_network_interface" "example" {
+      - applied_dns_servers           = [] -> null
+      - dns_servers                   = [] -> null
+      - enable_accelerated_networking = false -> null
+      - enable_ip_forwarding          = false -> null
+      - id                            = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic" -> null
+      - internal_domain_name_suffix   = "a3kxjxidfa1ehboqi1ilbqhrig.rx.internal.cloudapp.net" -> null
+      - location                      = "centralindia" -> null
+      - mac_address                   = "60-45-BD-A5-6A-53" -> null
+      - name                          = "siv-nic" -> null
+      - private_ip_address            = "10.0.2.4" -> null
+      - private_ip_addresses          = [
+          - "10.0.2.4",
+        ] -> null
+      - resource_group_name           = "siv-rg" -> null
+      - tags                          = {} -> null
+      - virtual_machine_id            = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm" -> null
+
+      - ip_configuration {
+          - name                          = "internal" -> null
+          - primary                       = true -> null
+          - private_ip_address            = "10.0.2.4" -> null
+          - private_ip_address_allocation = "Dynamic" -> null
+          - private_ip_address_version    = "IPv4" -> null
+          - subnet_id                     = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn" -> null
+        }
+    }
+
+  # azurerm_resource_group.example will be destroyed
+  - resource "azurerm_resource_group" "example" {
+      - id       = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg" -> null
+      - location = "centralindia" -> null
+      - name     = "siv-rg" -> null
+      - tags     = {} -> null
+    }
+
+  # azurerm_subnet.example will be destroyed
+  - resource "azurerm_subnet" "example" {
+      - address_prefixes                               = [
+          - "10.0.2.0/24",
+        ] -> null
+      - enforce_private_link_endpoint_network_policies = false -> null
+      - enforce_private_link_service_network_policies  = false -> null
+      - id                                             = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn" -> null
+      - name                                           = "siv-sn" -> null
+      - private_endpoint_network_policies_enabled      = true -> null
+      - private_link_service_network_policies_enabled  = true -> null
+      - resource_group_name                            = "siv-rg" -> null
+      - service_endpoint_policy_ids                    = [] -> null
+      - service_endpoints                              = [] -> null
+      - virtual_network_name                           = "siv-vn" -> null
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.example will be destroyed
+  - resource "azurerm_virtual_machine_data_disk_attachment" "example" {
+      - caching                   = "ReadWrite" -> null
+      - create_option             = "Attach" -> null
+      - id                        = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm/dataDisks/siv-disk1" -> null
+      - lun                       = 10 -> null
+      - managed_disk_id           = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/disks/siv-disk1" -> null
+      - virtual_machine_id        = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm" -> null
+      - write_accelerator_enabled = false -> null
+    }
+
+  # azurerm_virtual_network.example will be destroyed
+  - resource "azurerm_virtual_network" "example" {
+      - address_space           = [
+          - "10.0.0.0/16",
+        ] -> null
+      - dns_servers             = [] -> null
+      - flow_timeout_in_minutes = 0 -> null
+      - guid                    = "dd745507-2803-4336-85d0-46d0b0c0f146" -> null
+      - id                      = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn" -> null
+      - location                = "centralindia" -> null
+      - name                    = "siv-vn" -> null
+      - resource_group_name     = "siv-rg" -> null
+      - subnet                  = [
+          - {
+              - address_prefix = "10.0.2.0/24"
+              - id             = "/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn"
+              - name           = "siv-sn"
+              - security_group = ""
+            },
+        ] -> null
+      - tags                    = {} -> null
+    }
+
+Plan: 0 to add, 0 to change, 7 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+azurerm_virtual_machine_data_disk_attachment.example: Destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm/dataDisks/siv-disk1]
+azurerm_virtual_machine_data_disk_attachment.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...ualMachines/siv-vm/dataDisks/siv-disk1, 10s elapsed]
+azurerm_virtual_machine_data_disk_attachment.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...ualMachines/siv-vm/dataDisks/siv-disk1, 20s elapsed]
+azurerm_virtual_machine_data_disk_attachment.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...ualMachines/siv-vm/dataDisks/siv-disk1, 30s elapsed]
+azurerm_virtual_machine_data_disk_attachment.example: Destruction complete after 32s
+azurerm_managed_disk.example: Destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/disks/siv-disk1]
+azurerm_linux_virtual_machine.example: Destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Compute/virtualMachines/siv-vm]
+azurerm_managed_disk.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...ders/Microsoft.Compute/disks/siv-disk1, 10s elapsed]
+azurerm_linux_virtual_machine.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 10s elapsed]
+azurerm_managed_disk.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...ders/Microsoft.Compute/disks/siv-disk1, 20s elapsed]
+azurerm_linux_virtual_machine.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 20s elapsed]
+azurerm_managed_disk.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...ders/Microsoft.Compute/disks/siv-disk1, 30s elapsed]
+azurerm_linux_virtual_machine.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 30s elapsed]
+azurerm_managed_disk.example: Destruction complete after 31s
+azurerm_linux_virtual_machine.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 40s elapsed]
+azurerm_linux_virtual_machine.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 50s elapsed]
+azurerm_linux_virtual_machine.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 1m0s elapsed]
+azurerm_linux_virtual_machine.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Compute/virtualMachines/siv-vm, 1m10s elapsed]
+azurerm_linux_virtual_machine.example: Destruction complete after 1m17s
+azurerm_network_interface.example: Destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/networkInterfaces/siv-nic]
+azurerm_network_interface.example: Destruction complete after 5s
+azurerm_subnet.example: Destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn/subnets/siv-sn]
+azurerm_subnet.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-.../virtualNetworks/siv-vn/subnets/siv-sn, 10s elapsed]
+azurerm_subnet.example: Destruction complete after 10s
+azurerm_virtual_network.example: Destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg/providers/Microsoft.Network/virtualNetworks/siv-vn]
+azurerm_virtual_network.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-...crosoft.Network/virtualNetworks/siv-vn, 10s elapsed]
+azurerm_virtual_network.example: Destruction complete after 11s
+azurerm_resource_group.example: Destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg]
+azurerm_resource_group.example: Still destroying... [id=/subscriptions/e7f340c5-89ac-403d-82ed-0571261dea04/resourceGroups/siv-rg, 10s elapsed]
+azurerm_resource_group.example: Destruction complete after 16s
+
+Destroy complete! Resources: 7 destroyed.
+
+C:\Users\user25\Desktop\Azure_VM>
